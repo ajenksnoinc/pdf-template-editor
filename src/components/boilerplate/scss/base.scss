@@ -1,0 +1,80 @@
+@use "./minireset.sass" as *;
+@use "./parents.scss" as *;
+@use "./theme.scss" as *;
+
+@use "./spacing.scss" as *;
+@use "./regions.scss" as *;
+@use "./flex.scss" as *;
+@use "./display.scss" as *;
+@use "./colors.scss" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=#{$font-url}:wght@#{$font-weights}&display=swap");
+
+:root {
+    --bg-primary: #{$bg-primary};
+    --bg-secondary: #{$bg-secondary};
+    --bg-tertiary: #{$bg-tertiary};
+    --bg-quaternary: #{$bg-quaternary};
+    --focus-primary: #{$focus-primary};
+    --focus-secondary: #{$focus-secondary};
+    --text-primary: #{$text-primary};
+    --text-secondary: #{$text-secondary};
+    --text-tertiary: #{$text-tertiary};
+    --text-link: #{$text-link};
+    --text-danger: #{$text-danger};
+    --hint-primary: #{$hint-primary};
+    --palette-primary: #{$palette-primary};
+    --palette-secondary: #{$palette-secondary};
+    --palette-tertiary: #{$palette-tertiary};
+    --palette-quaternary: #{$palette-quaternary};
+    --theme-primary: #{$theme-primary};
+    --shadow-light: #{$shadow-light};
+    --shadow-dark: #{$shadow-dark};
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    font-family: $font, sans-serif;
+}
+
+html, body {
+    background: $bg-primary;
+    color: $text-primary;
+    font-family: $font, sans-serif;
+}
+
+.is-size-unset {
+    width: unset !important;
+    height: unset !important;
+}
+
+@each $label, $color in (
+    "primary": $text-primary,
+    "secondary": $text-secondary,
+    "tertiary": $text-tertiary,
+    "highlighted": $text-link,
+    "danger": $text-danger
+) {
+    .is-text-#{$label} {
+        color: $color !important;
+    }
+}
+
+@each $label, $color in (
+    "primary": $bg-primary,
+    "secondary": $bg-secondary,
+    "tertiary": $bg-tertiary,
+    "quaternary": $bg-quaternary
+) {
+    .is-bg-#{$label} {
+        background-color: $color !important;
+    }
+}
+
+.for-mobile { display: none !important; }
+.for-mobile.is-flex { display: none !important; }
+.for-desktop { display: block !important; }
+.for-desktop.is-flex { display: flex !important; }

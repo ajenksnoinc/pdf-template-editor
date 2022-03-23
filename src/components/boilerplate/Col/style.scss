@@ -1,0 +1,68 @@
+@use "../scss/theme.scss" as *;
+@use "../scss/responsive.scss" as *;
+
+@use "sass:math";
+
+%column {
+    position: relative;
+    width: 100%;
+    padding: 0 math.div($grid-gutter-width, 2);
+    flex: 1 0 0%;
+}
+
+@mixin col-auto() {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@mixin col($size) {
+    flex: 0 0 auto;
+    width: percentage(math.div($size, $grid-columns)) !important;
+}
+
+.col {
+    @extend %column;
+}
+
+.col > .row > .col {
+    padding: 0 math.div($grid-gutter-width, 3);
+}
+
+.col > .row > .col:first-of-type {
+    padding-left: 0;
+}
+
+.col > .row > .col:last-of-type {
+    padding-right: 0;
+}
+
+@for $i from 1 through $grid-columns {
+    .col-#{$i} {
+        @include col($i);
+    }
+}
+
+@each $bkp in map-keys($breakpoints) {
+    @for $i from 1 through $grid-columns {
+        .col-#{$bkp}-#{$i} {
+            @extend %column;
+            // flex: 1 0 100%;
+        }
+    }
+
+    @include breakpoint($bkp) {
+        .col-#{$bkp} {
+            flex: 1 0 0%;
+        }
+
+        .col-#{$bkp}-auto {
+            @include col-auto();
+        }
+
+        @for $i from 1 through $grid-columns {
+            .col-#{$bkp}-#{$i} {
+                @include col($i);
+            }
+        }
+    }
+}

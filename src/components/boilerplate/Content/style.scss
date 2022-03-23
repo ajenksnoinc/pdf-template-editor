@@ -1,0 +1,10 @@
+@use "../scss/parents.scss" as *;
+
+.content-box {
+    @extend %flexing;
+    align-items: flex-start;
+
+    width: 100%;
+    min-height: 100%;
+    flex: 1 1 100%;
+}

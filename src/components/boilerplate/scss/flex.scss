@@ -1,0 +1,32 @@
+@use "./parents.scss" as *;
+
+@each $just, $val in ("center": center, "end": flex-end, "start": flex-start, "around": space-around, "even": space-evenly, "between": space-between) {
+    .has-justified-#{$just} {
+        justify-content: $val !important;
+    }
+
+    .has-aligned-#{$just} {
+        align-items: $val !important;
+    }
+
+    .is-justified-#{$just} {
+        justify-self: $val !important;
+    }
+
+    .is-aligned-#{$just} {
+        align-self: $val !important;
+    }
+}
+
+@each $flex in (row, column, row-reverse, column-reverse) {
+    .is-flex-#{$flex} {
+        display: flex !important;
+        flex-direction: $flex !important;
+    }
+}
+
+.is-flex-block {
+    @extend %flexing;
+    flex: 0 0 auto;
+    justify-content: center;
+}

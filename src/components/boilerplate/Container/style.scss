@@ -1,0 +1,25 @@
+@use "../scss/responsive.scss" as *;
+
+$container-sizes: (
+    "xs":  100%,
+    "sm":  100%,
+    "md":  50rem,
+    "lg":  60rem,
+    "xl":  75rem,
+    "xxl": 90rem
+);
+
+$default-size: "md";
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+
+    @each $breakpoint, $size in $container-sizes {
+        @include breakpoint($breakpoint) {
+            max-width: $size;
+        }
+    }
+}

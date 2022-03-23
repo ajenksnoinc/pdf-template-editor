@@ -1,0 +1,153 @@
+.material-table {
+    width: 100%;
+    border: none;
+    border-collapse: separate;
+    border-spacing: 0 .5rem;
+    color: #212529;
+    margin-bottom: 1rem;
+
+    &.grid-table {
+        row-gap: .5rem;
+    }
+
+    .thead {
+        border-bottom: 2px solid #dee2e6;
+
+        .th {
+            text-align: left;
+            padding: .45rem;
+            vertical-align: bottom;
+            border: none;
+            background: #fff;
+            white-space: pre-wrap;
+
+            &:empty {
+                padding: 0;
+            }
+
+            &.table-drag-handle {
+                width: 2rem;
+            }
+        }
+    }
+
+    &.sticky-header {
+        .th {
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        /* Sticky to top of page, give space for navbar */
+        &.template th {
+            top: 85px;
+            padding-top: 1rem;
+        }
+    }
+
+    .tbody tr:not(.is-plain),
+    .tbody .tr:not(.is-plain) {
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        transition-duration: 0.3s;
+        transition-property: box-shadow;
+        background-color: #fff;
+    }
+}
+
+.material-table > tbody tr:not(.is-plain):not(.no-highlight):not(.separator):hover,
+.material-table.highlight-on-focus > tbody tr:not(.is-plain):not(.no-highlight):not(.separator):focus-within,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.no-highlight):not(.separator):hover,
+.material-table.grid-table.highlight-on-focus > .tbody .tr:not(.is-plain):not(.no-highlight):not(.separator):focus-within {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    color: #212529;
+    background-color: #ececec;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.no-highlight):not(.separator):hover > td > .avatar-list > .avatar .img,
+.material-table.highlight-on-focus > tbody tr:not(.is-plain):not(.no-highlight):not(.separator):focus-within > td > .avatar-list > .avatar .img,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.no-highlight):not(.separator):hover > .td > .avatar-list > .avatar .img,
+.material-table.grid-table.highlight-on-focus > .tbody .tr:not(.is-plain):not(.no-highlight):not(.separator):focus-within > .td > .avatar-list > .avatar .img {
+    border-color: #ececec;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.no-highlight):not(.separator).is-highlighted,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.no-highlight):not(.separator).is-highlighted {
+    color: #212529;
+    background-color: #ececec;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.no-highlight):not(.separator).is-highlighted > td > .avatar-list > .avatar .img,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.no-highlight):not(.separator).is-highlighted > .td > .avatar-list > .avatar .img {
+    border-color: #ececec;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.separator) td,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td {
+    padding: .45rem;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    vertical-align: middle;
+}
+
+.material-table > tbody tr:not(.is-plain).center-vert td > *,
+.material-table > tbody tr:not(.is-plain) td.center-vert > * ,
+.material-table.grid-table > .tbody .tr:not(.is-plain).center-vert td > *,
+.material-table.grid-table > .tbody .tr:not(.is-plain) .td.center-vert > * {
+    vertical-align: middle;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.separator) td.row-actions,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td.row-actions {
+    padding: .25rem;
+    width: 1px;
+    white-space: nowrap;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.separator) td:empty,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td:empty {
+    padding: 0;
+}
+
+.material-table > tbody tr:not(.is-plain):not(.separator) td:first-of-type,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td:first-of-type {
+    border-left: 1px solid rgba(0,0,0,.125);
+}
+
+.material-table > tbody tr:not(.is-plain):not(.separator) td:last-of-type,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td:last-of-type {
+    border-right: 1px solid rgba(0,0,0,.125);
+}
+
+.material-table > thead th:first-of-type:not(:empty),
+.material-table > tbody tr:not(.is-plain):not(.separator) td:first-of-type:not(:empty),
+.material-table.grid-table > .thead .th:first-of-type:not(:empty),
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td:first-of-type:not(:empty) {
+    padding-left: 1.5rem;
+}
+
+.material-table > thead th:last-of-type:not(:empty),
+.material-table > tbody tr:not(.is-plain):not(.separator) td:last-of-type:not(:empty),
+.material-table.grid-table > .thead .th:last-of-type:not(:empty),
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .td:last-of-type:not(:empty) {
+    padding-right: 1.5rem;
+}
+
+
+.material-table > tbody tr:not(.is-plain):not(.separator) tr.clickable,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .tr.clickable {
+    cursor: pointer !important;
+}
+
+.material-table > tbody tr:not(.separator) tr:not(.is-plain).clickable.disabled,
+.material-table.grid-table > .tbody .tr:not(.is-plain):not(.separator) .tr.clickable.disabled {
+    cursor: default !important;
+}
+
+.material-table > tbody tr:not(.is-plain).separator td,
+.material-table.grid-table > .tbody .tr.separator .td {
+    font-weight: 100;
+    border-bottom: 2px solid rgba(0,0,0,.125);
+    padding: .5rem;
+}

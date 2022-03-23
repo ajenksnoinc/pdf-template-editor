@@ -1,0 +1,32 @@
+@use "../scss/colors.scss" as *;
+@use "../scss/theme.scss" as *;
+@use "../scss/responsive.scss" as *;
+
+.navbar {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: fontSize("md");
+    color: $text-primary;
+    background: $bg-primary;
+
+    .logo {
+        max-height: 3rem;
+    }
+
+    &.is-sticky {
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: $layer-ui;
+    }
+
+    &.is-raised {
+        box-shadow: 0 .5rem .6rem $shadow-dark, 0 -.5rem .6rem $shadow-light;
+    }
+
+    @include breakpoint("md") {
+        padding: 1rem 2rem;
+    }
+}

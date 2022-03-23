@@ -1,0 +1,33 @@
+@use "./parents.scss" as *;
+
+.is-nav-region {
+    @extend %flexing;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.is-disabled-region {
+    pointer-events: none;
+    opacity: .4;
+}
+
+.is-label-region {
+    @extend %flexing;
+}
+
+.is-floating-region {
+    @extend %flexing;
+    @extend %ui-element;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+
+    > * {
+        pointer-events: all;
+    }
+}

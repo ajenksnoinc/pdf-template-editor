@@ -1,0 +1,47 @@
+$breakpoint-xs: 0;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1921px;
+
+$breakpoints: (
+    "xs": $breakpoint-xs,
+    "sm": $breakpoint-sm,
+    "md": $breakpoint-md,
+    "lg": $breakpoint-lg,
+    "xl": $breakpoint-xl,
+    "xxl": $breakpoint-xxl
+);
+
+@mixin breakpoint($size) {
+    @media(min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin belowBreakpoint($size) {
+    @media(max-width: (map-get($breakpoints, $size) - 1)) {
+        @content;
+    }
+}
+
+@mixin forMobile() {
+    body:not(.is-desktop) {
+        @content;
+    }
+}
+
+@mixin forDesktop() {
+    body.is-desktop {
+        @content;
+    }
+}
+
+@include belowBreakpoint("md") {
+    .for-mobile { display: block !important; }
+    .for-mobile.is-flex { display: flex !important; }
+
+    .for-desktop { display: none !important; }
+    .for-desktop.is-flex { display: none !important; }
+}

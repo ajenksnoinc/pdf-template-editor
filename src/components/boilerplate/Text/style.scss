@@ -1,0 +1,51 @@
+.text {
+    font-size: 1rem;
+    font-weight: normal;
+    display: block;
+    margin: 0 0 1rem 0;
+    color: var(--color);
+}
+
+a.text, span.text, i.text, em.text, strong.text {
+    display: inline-block;
+}
+
+a.text {
+    position: relative;
+    text-decoration: none;
+    color: $text-link;
+    color: var(--color);
+    font-weight: var(--weight);
+
+    &:after {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        bottom: -.1em;
+        left: 50%;
+
+        transition: all .1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        transform: translateX(-50%);
+
+        height: .1em;
+        width: 0;
+        background: $text-link;
+    }
+
+    &:hover:after {
+        width: 100%;
+    }
+}
+
+@for $i from 1 through 6 {
+    h#{$i}.text {
+        font-size: .75rem + (6-$i)*.25rem;
+    }
+}
+
+.is-bold { font-weight: bold !important; }
+.is-italic { font-style: italic !important; }
+.is-overlined { text-decoration: overline !important; }
+.is-underlined { text-decoration: underline !important; }
+.is-strikethrough { text-decoration: line-through !important; }
+.is-text-centered { text-align: center !important; }

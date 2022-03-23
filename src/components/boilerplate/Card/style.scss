@@ -1,0 +1,38 @@
+@use "../scss/colors.scss" as *;
+
+.card {
+    border-radius: borderRadius();
+    box-shadow: shadow();
+    background: $bg-primary;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 1rem;
+    padding: 1rem;
+
+    .card-header {
+        flex: 1 1 auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 1.5rem;
+        margin: -1rem -1rem 0 -1rem;
+
+        border-top-right-radius: borderRadius();
+        border-top-left-radius: borderRadius();
+        padding: 1rem;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        padding-top: 1rem;
+        display: block;
+    }
+
+    // .card-footer {
+
+    // }
+}

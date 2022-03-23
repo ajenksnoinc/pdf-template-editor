@@ -1,0 +1,189 @@
+@use "~/components/boilerplate/scss/colors.scss" as *;
+
+[page="home"] {
+    .file-dropper {
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: $bg-secondary;
+        user-select: none;
+
+        transition: background .3s linear;
+
+        .drop-container-content {
+            opacity: .5;
+
+            .icon {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        &.is-dragging {
+            background: darken($bg-secondary, 10);
+
+            .drop-container-content {
+                opacity: 1;
+            }
+        }
+    }
+
+    .document-container {
+        align-items: flex-start;
+        justify-content: center;
+
+        background: darken($bg-primary, 10);
+        padding-bottom: 8rem; // Leave room for the add elements button
+
+        .document {
+            margin: 2rem 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            .page {
+                box-shadow: 0rem 0rem 1rem .21rem rgba(0, 0, 0, 0.3);
+            }
+
+            .page-detail-bar {
+                box-shadow: 0rem 0rem 1rem .21rem rgba(0, 0, 0, 0.3);
+                background: $bg-primary;
+                padding: 0 0 0 1.5rem;
+                z-index: 1;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: .5rem;
+            }
+
+            .page-detail-bar:not(:first-child) {
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    .element-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        pointer-events: none;
+
+        .page-element {
+            position: absolute;
+            display: inline-flex;
+            color: #fff;
+
+            background: $palette-primary;
+            padding: 4px;
+
+            align-items: stretch;
+            justify-content: stretch;
+
+            transition: background .2s ease;
+
+            pointer-events: all;
+
+            &.is-active {
+                background: #666;
+
+                z-index: 1;
+            }
+
+            &:hover {
+                background: darken($palette-primary, 20);
+            }
+
+            .element-body {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+
+                padding-left: .25rem;
+                background: $palette-primary;
+
+                transition: background .2s ease;
+                // overflow: visible;
+
+                text-shadow: 0px 0px 4px #000;
+
+                cursor: grab;
+
+                .element-details {
+                    display: flex;
+                    white-space: nowrap;
+                    position: absolute;
+                    cursor: default;
+
+                    align-items: center;
+                    justify-content: space-between;
+
+                    bottom: -3rem;
+                    left: -4px;
+                    // width: calc(100% + 12px);
+                    padding: .3rem .75rem;
+                    background: #fff;
+                    border: 1px solid #ddd;
+
+                    border-radius: .25rem;
+                    // border-top-right-radius: .5rem;
+                    color: #777;
+                    text-shadow: none;
+                    font-size: .8rem;
+                    box-shadow: 0rem 0rem 1rem .21rem rgba(0, 0, 0, 0.4);
+
+                    > span {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        a:not(:first-of-type) {
+                            margin-left: .5rem;
+                        }
+                    }
+                }
+            }
+
+            &:hover .element-body:not(:hover) {
+                background: #fff;
+                color: #000;
+                text-shadow: 0px 0px 4px #fff;
+            }
+        }
+    }
+
+    .floating-action-btn {
+        margin: 0 4rem 4rem 0;
+        box-shadow: 0rem 0rem .5rem .3rem rgba(0, 0, 0, 0.2);
+        border: none;
+
+        background: $palette-primary;
+        color: #fff;
+
+        // Boost framer motion performance by only animating essentials with CSS
+        transition: border-radius .15s ease,
+                    box-shadow .15s ease;
+
+        &:hover {
+            box-shadow: none;
+            border-color: $focus-primary;
+
+            background: darken($palette-primary, 20);
+            cursor: move;
+        }
+
+        &.is-dragging {
+            box-shadow: none;
+            pointer-events: none;
+            border-radius: 0;
+        }
+    }
+}

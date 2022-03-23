@@ -1,0 +1,43 @@
+@use "./theme.scss" as *;
+
+@each $size, $mult in $spacing {
+    .has-m-#{$size}  { margin: $spacer * $mult !important; }
+
+    .has-mx-#{$size} {
+        margin-left: $spacer * $mult !important;
+        margin-right: $spacer * $mult !important;
+    }
+
+    .has-my-#{$size} {
+        margin-top: $spacer * $mult !important;
+        margin-bottom: $spacer * $mult !important;
+    }
+
+    .has-ml-#{$size} { margin-left: $spacer * $mult !important; }
+    .has-mr-#{$size} { margin-right: $spacer * $mult !important; }
+    .has-mt-#{$size} { margin-top: $spacer * $mult !important; }
+    .has-mb-#{$size} { margin-bottom: $spacer * $mult !important; }
+
+    .has-p-#{$size}  { padding: $spacer * $mult !important; }
+
+    .has-px-#{$size} {
+        padding-left: $spacer * $mult !important;
+        padding-right: $spacer * $mult !important;
+    }
+
+    .has-py-#{$size} {
+        padding-top: $spacer * $mult !important;
+        padding-bottom: $spacer * $mult !important;
+    }
+
+    .has-pl-#{$size} { padding-left: $spacer * $mult !important; }
+    .has-pr-#{$size} { padding-right: $spacer * $mult !important; }
+    .has-pt-#{$size} { padding-top: $spacer * $mult !important; }
+    .has-pb-#{$size} { padding-bottom: $spacer * $mult !important; }
+}
+
+@for $i from 1 to 3 {
+    .is-z-#{$i} {
+        z-index: $i;
+    }
+}

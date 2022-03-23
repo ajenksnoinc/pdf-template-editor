@@ -1,0 +1,116 @@
+@use "~/components/boilerplate/scss/colors.scss" as *;
+@use "./adornments.scss" as *;
+
+$error-svg: "data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3E%3Ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3E%3C/svg%3E";
+
+.form-group {
+    display: block;
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: $text-danger;
+}
+
+.is-invalid~.invalid-feedback,
+.was-validated :invalid~.invalid-feedback {
+    display: block;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font-family: "Muli", sans-serif;
+
+    &:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: $palette-primary;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba($palette-primary, .25);
+    }
+
+    &.is-invalid {
+        border-color: $text-danger;
+        padding-right: calc(1.5em + .75rem);
+        background-image: url($error-svg);
+        background-repeat: no-repeat;
+        background-position: right calc(.375em + .1875rem) center;
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba($text-danger, .25);
+        }
+    }
+
+    &:disabled, &.is-disabled {
+        cursor: not-allowed;
+        background-color: #eee;
+        color: #000;
+    }
+}
+
+.custom-control-label {
+    margin-left: .5rem;
+    font-size: .9rem;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.input-group>.custom-select:not(:first-child),
+.input-group>.form-control:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+.form-group.credit-card-input-wrapper {
+    input.form-control {
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+        border-left: 1px solid #ced4da;
+    }
+}
+
+.input-group > .floating-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .ui-layer {
+        min-width: 100%;
+    }
+}
+
+.is-link-error {
+    margin: 0;
+    display: block;
+}

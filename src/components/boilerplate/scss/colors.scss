@@ -1,0 +1,39 @@
+$bg-primary: #fff;
+$bg-invert: invert($bg-primary);
+$bg-secondary: rgba(244, 249, 253, 1);
+$bg-tertiary: rgba(93, 111, 125, 1);
+$bg-quaternary: rgba(66, 80, 91, 1);
+
+$focus-primary: #001f3f;
+$focus-secondary: rgba(0, 31, 63, 0.5);
+
+$text-primary: rgba(40, 40, 40, 1.0);
+$text-secondary: rgba(0, 56, 114, 0.3);
+$text-tertiary: #005fc0;
+$text-link: #009ed4;
+$text-danger: #c61f1f;
+
+$hint-primary: rgba(0, 0, 0, 0.07);
+
+$palette-primary: #58c9f5;
+$palette-secondary: #C1666B;
+$palette-tertiary: #1B9AAA;
+$palette-quaternary: #52AA5E;
+
+$theme-primary: #304962;
+
+$shadow-light: rgba(255, 255, 255, .5);
+$shadow-dark: rgba(0, 0, 0, 0.2);
+
+@function safeDisplayColor($bg: $palette-primary) {
+    // https://en.wikipedia.org/wiki/Relative_luminance
+    $y: .2126 * (color.red($bg))
+        + .7152 * (color.green($bg))
+        + .0722 * (color.blue($bg));
+
+    @if($y > 180) { // Arbitrary choice to fit the TM messages POC sidebar
+        @return black;
+    }
+
+    @return white;
+}

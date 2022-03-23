@@ -1,0 +1,15 @@
+@each $display in (inline, inline-block, block, flex, inline-flex) {
+    .is-#{$display} {
+        display: $display !important;
+    }
+}
+
+@each $position in (relative, fixed, absolute, sticky) {
+    .is-#{$position} {
+        position: $position !important;
+    }
+}
+
+.is-hidden {
+    display: none !important;
+}

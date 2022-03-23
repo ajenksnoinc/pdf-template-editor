@@ -1,0 +1,17 @@
+.badge {
+    padding: .25rem .41rem;
+    border-radius: 10rem;
+    background: $palette-primary;
+    color: safeDisplayColor($palette-primary);
+    font-size: .6rem;
+
+    &.is-absolute {
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+
+        // transform: translateX(20%);
+        border: .2rem solid $bg-primary;
+        pointer-events: none;
+    }
+}

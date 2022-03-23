@@ -1,0 +1,92 @@
+$tab-padding-h: 1rem;
+$tab-padding-v: 1rem;
+
+.top-tab-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    z-index: $layer-ui - 1;
+
+    &.is-container-only {
+        flex: 1 1 auto;
+    }
+
+    .tab {
+        position: relative;
+        padding: $tab-padding-v $tab-padding-h;
+        font-size: 1rem;
+        border-radius: 0;
+        border: none;
+        outline: none;
+        flex: 1 0 auto;
+
+        transition: border-bottom-color .2s ease, background .2s ease;
+
+        &.is-active {
+            background: $hint-primary;
+        }
+
+        .indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            
+            background-color: $palette-primary;
+        }
+    }
+
+    &.is-raised {
+        box-shadow: 0 .5rem .6rem $shadow-dark, 0 -.5rem .6rem $shadow-light;
+    }
+
+    &.is-desktop-nav {
+        flex: 0 0 auto;
+        width: unset;
+
+        .tab {
+            flex: 0 0 auto;
+            flex-direction: row-reverse;
+            height: 100%;
+            margin: 0;
+        }
+    }
+
+    &.is-bottom-nav {
+        .tab {
+            flex-direction: column-reverse;
+            margin-top: .3rem;
+
+            span, .icon {
+                transition: color .2s ease, fill .2s ease;
+            }
+
+            .icon {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            .indicator {
+                width: calc(100% + #{$tab-padding-h * 2});
+                bottom: -1rem;
+                left: -1.3rem;
+                height: .2rem;
+                z-index: 0;
+            }
+
+            &.is-active {
+                background: transparent;
+
+                span, .icon {
+                    color: $palette-primary;
+                    fill: $palette-primary;
+                }
+            }
+        }
+    }
+}

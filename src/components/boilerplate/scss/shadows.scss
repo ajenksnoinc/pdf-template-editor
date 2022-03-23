@@ -1,0 +1,47 @@
+@function shadow($size: "sm") {
+    $mult: map-get($sizes, $size);
+    $val: $shadowSize * $mult;
+
+    @return $val $val 1rem*$mult $shadow-dark, (-$val) (-$val) .5rem*$mult $shadow-light;
+}
+
+@function shadowMult($mult, $perc) {
+    $val: $shadowSize * $mult;
+    $dark: scale-color($shadow-dark, $lightness: 0%, $alpha: percentage(math.div($perc, 100)));
+
+    @return $val $val .5rem*$mult $dark, (-$val) (-$val) .5rem*$mult $shadow-light;
+}
+
+@function shadowInset($size: "sm") {
+    $mult: map-get($sizes, $size);
+    $val: $shadowSize * $mult;
+
+    @return inset $val $val .5rem*$mult $shadow-dark, inset (-$val) (-$val) .5rem*$mult $shadow-light;
+}
+
+@function shadowInsetMult($mult, $perc) {
+    $val: $shadowSize * $mult;
+    $dark: scale-color($shadow-dark, $lightness: 0%, $alpha: percentage(math.div($perc, 100)));
+
+    @return inset $val $val .5rem*$mult $dark, inset (-$val) (-$val) .5rem*$mult $shadow-light;
+}
+
+@function shadowRidge($size: "sm") {
+    $mult: map-get($sizes, $size);
+    $val: $shadowSize * $mult;
+
+    @return $val $val .5rem*$mult $shadow-dark,
+            (-$val) (-$val) .5rem*$mult $shadow-light,
+            inset $val $val .5rem*$mult $shadow-dark,
+            inset (-$val) (-$val) .5rem*$mult $shadow-light;
+}
+
+@function shadowRidgeMult($mult, $perc) {
+    $val: $shadowSize * $mult;
+    $dark: scale-color($shadow-dark, $lightness: 0%, $alpha: $perc);
+
+    @return $val $val .5rem*$mult $dark,
+            (-$val) (-$val) .5rem*$mult $shadow-light,
+            inset $val $val .5rem*$mult $dark,
+            inset (-$val) (-$val) .5rem*$mult $shadow-light;
+}

@@ -1,0 +1,19 @@
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    animation: spinner .8s linear infinite;
+    transform-origin: 50%;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 10em;
+    border-bottom: .2rem solid white;
+}

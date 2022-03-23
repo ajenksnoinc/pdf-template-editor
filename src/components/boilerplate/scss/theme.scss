@@ -1,0 +1,70 @@
+@use "sass:color";
+@use "sass:math";
+
+@use "./responsive.scss" as *;
+@use "./shadows.scss" as *;
+
+$font: "Open Sans";
+$font-url: $font; // In some cases, the Google Fonts name is different than the font family name
+$font-weights: "300;400;500;600;700";
+
+$shadowSize: .5rem;
+
+$spacer: 1rem;
+
+$grid-spacing: .75rem;
+$grid-columns: 12 !default;
+$grid-gutter-width: $grid-spacing * 1.5 !default;
+
+$spacing: (
+    0: 0,
+    1: .25,
+    2: .5,
+    3: 1,
+    4: 1.5,
+    5: 2,
+    6: 3
+);
+
+$sizes: (
+    "xs": 0.5,
+    "sm": 0.6,
+    "md": 0.75,
+    "lg": 0.85,
+    "xl": 1.0,
+    "xxl": 1.2
+);
+
+$layer-bg: -1;
+$layer-fg: 0;
+$layer-dropdown: 1000;
+$layer-ui: 5000;
+$layer-modal: 10000;
+
+@function fontSize($size: "sm") {
+    $mult: map-get($sizes, $size);
+
+    @return 2rem * $mult;
+}
+
+@function borderRadius($size: "sm") {
+    @return .75rem * map-get($sizes, $size);
+}
+
+@mixin hoverable {
+    cursor: pointer;
+    transition: box-shadow .3s ease;
+    user-select: none;
+}
+
+@mixin forDarkTheme() {
+    body.is-dark-theme {
+        @content;
+    }
+}
+
+@mixin forLightTheme() {
+    body:not(.is-dark-theme) {
+        @content;
+    }
+}
